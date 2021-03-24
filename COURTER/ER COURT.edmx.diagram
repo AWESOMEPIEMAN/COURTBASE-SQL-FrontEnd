@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0583293b8af7410aaee5b24473e792c6" Name="Diagram1">
+        <EntityTypeShape EntityType="CourtModel.Clerk" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.courtroom" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.Defendant" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.DistrictCourt" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.firm" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.HighCourt" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.Judge" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.Jury" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.lawyer" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.Plaintiff" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.Sheriff" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourtModel.spectator" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Clerk__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Defen__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Judge__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Membe__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Plain__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Sheri__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__courtroom__Spec___3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__DistrictC__Room___440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__Judge__Defendant__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__lawyer__Defendan__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__HighCourt__ID_DC__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__Judge__Firm_ID__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__lawyer__Firm_ID__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__Judge__Plaintiff__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="CourtModel.FK__lawyer__Plaintif__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

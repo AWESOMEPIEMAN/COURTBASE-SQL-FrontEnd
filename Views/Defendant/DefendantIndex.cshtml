@@ -1,0 +1,49 @@
+﻿
+@model CourtroomProject.COURTER.Defendant
+
+@{
+    ViewBag.Title = "DefendantIndex";
+}
+
+<h2>DefendantIndex</h2>
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("DefendantAdd", "Defendant", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.HiddenFor(x => x.Defendant_ID)
+            <label>Name</label>
+
+            @Html.ValidationMessageFor(x => x.name_defend, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.name_defend, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+
+            @Html.ValidationMessageFor(x => x.age_defend, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.age_defend, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>DOB</label>
+
+            @Html.ValidationMessageFor(x => x.DOB_defend, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.DOB_defend, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+    </div>
+}
+
+

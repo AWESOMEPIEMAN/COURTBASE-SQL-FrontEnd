@@ -1,0 +1,38 @@
+﻿
+@model List<CourtroomProject.COURTER.firm>
+@{
+    ViewBag.Title = "FirmList";
+}
+
+<h2>FirmList</h2>
+
+<table class="table table-hover">
+    <tr>
+
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Starting Year</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+      
+<tr>
+    <td>@item.name_firm</td>
+    <td>@item.address_firm</td>
+    <td>@item.phone_firm</td>
+    <td>@item.email_firm</td>
+    <td>@item.StartingYear</td>
+    <td>
+
+        <a href="@Url.Action("FirmIndex",new { item.Firm_ID,item.name_firm,item.address_firm,item.phone_firm,item.email_firm,item.StartingYear})" class="btn btn-success">Edit</a>
+        <a href="@Url.Action("Delete_Firm", new { del = item.Firm_ID})" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
+}
+</table>
+

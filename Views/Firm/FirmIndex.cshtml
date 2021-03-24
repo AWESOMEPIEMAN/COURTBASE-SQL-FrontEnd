@@ -1,0 +1,58 @@
+﻿
+@model CourtroomProject.COURTER.firm
+@{
+    ViewBag.Title = "FirmIndex";
+}
+
+<h2>FirmIndex</h2>
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("FirmAdd", "Firm", FormMethod.Post))
+{
+<div class="container">
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Firm_ID)
+        <label>Name</label>
+
+        @Html.ValidationMessageFor(x => x.name_firm, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.name_firm, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+
+        @Html.ValidationMessageFor(x => x.address_firm, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.address_firm, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+
+        @Html.ValidationMessageFor(x => x.phone_firm, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.phone_firm, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+
+        @Html.ValidationMessageFor(x => x.email_firm, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.email_firm, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Starting Year</label>
+
+        @Html.ValidationMessageFor(x => x.StartingYear, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.StartingYear, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+</div>
+}

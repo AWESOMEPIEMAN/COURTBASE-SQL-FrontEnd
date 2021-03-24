@@ -1,0 +1,36 @@
+﻿@model List<CourtroomProject.COURTER.Judge>
+@{
+    ViewBag.Title = "JudgeList";
+}
+
+<h2>JudgeList</h2>
+
+<table class="table table-hover">
+    <tr>
+
+        <th>Name</th>
+        <th>Age</th>
+        <th>Rank</th>
+        <th>Years in Service</th>
+        <th>Action</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.name_judge</td>
+            <td>@item.age_judge</td>
+            <td>@item.rank_judge</td>
+            <td>@item.YearsInservice</td>
+            
+            <td>
+
+                <a href="@Url.Action("JudgeIndex",new { item.Judge_ID,item.name_judge,item.age_judge,item.rank_judge,item.YearsInservice})" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("Delete_Judge", new { del = item.Judge_ID})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

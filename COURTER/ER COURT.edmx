@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CourtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clerk">
+          <Key>
+            <PropertyRef Name="Clerk_ID" />
+          </Key>
+          <Property Name="Clerk_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_clerk" Type="char" MaxLength="20" />
+          <Property Name="age_clerk" Type="int" />
+          <Property Name="DOB_Clerk" Type="date" />
+          <Property Name="Address_Clerk" Type="char" MaxLength="20" />
+          <Property Name="Records_made" Type="int" />
+        </EntityType>
+        <EntityType Name="courtroom">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_cr" Type="char" MaxLength="20" />
+          <Property Name="Phone_no_cr" Type="char" MaxLength="20" />
+          <Property Name="case_t" Type="char" MaxLength="20" />
+          <Property Name="Plaintiff" Type="int" />
+          <Property Name="Defendant_ID" Type="int" />
+          <Property Name="Spec_ID" Type="int" />
+          <Property Name="Clerk_ID" Type="int" />
+          <Property Name="Judge_ID" Type="int" />
+          <Property Name="Sheriff_ID" Type="int" />
+          <Property Name="Member_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Defendant">
+          <Key>
+            <PropertyRef Name="Defendant_ID" />
+          </Key>
+          <Property Name="Defendant_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_defend" Type="char" MaxLength="20" />
+          <Property Name="age_defend" Type="int" />
+          <Property Name="DOB_defend" Type="date" />
+        </EntityType>
+        <EntityType Name="DistrictCourt">
+          <Key>
+            <PropertyRef Name="ID_DC" />
+          </Key>
+          <Property Name="ID_DC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District" Type="char" MaxLength="20" />
+          <Property Name="address" Type="char" MaxLength="20" />
+          <Property Name="Phone_no_dc" Type="char" MaxLength="20" />
+          <Property Name="Email" Type="char" MaxLength="20" />
+          <Property Name="Room_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="Firm_ID" />
+          </Key>
+          <Property Name="Firm_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_firm" Type="char" MaxLength="20" />
+          <Property Name="address_firm" Type="char" MaxLength="29" />
+          <Property Name="phone_firm" Type="int" />
+          <Property Name="email_firm" Type="char" MaxLength="20" />
+          <Property Name="StartingYear" Type="date" />
+        </EntityType>
+        <EntityType Name="HighCourt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChiefJustice" Type="char" MaxLength="20" />
+          <Property Name="address" Type="char" MaxLength="20" />
+          <Property Name="Phoneno" Type="char" MaxLength="20" />
+          <Property Name="email" Type="char" MaxLength="30" />
+          <Property Name="ID_DC" Type="int" />
+        </EntityType>
+        <EntityType Name="Judge">
+          <Key>
+            <PropertyRef Name="Judge_ID" />
+          </Key>
+          <Property Name="Judge_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_judge" Type="char" MaxLength="20" />
+          <Property Name="age_judge" Type="int" />
+          <Property Name="rank_judge" Type="char" MaxLength="10" />
+          <Property Name="YearsInservice" Type="int" />
+          <Property Name="Firm_ID" Type="int" />
+          <Property Name="Plaintiff" Type="int" />
+          <Property Name="Defendant_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Jury">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_jury" Type="char" MaxLength="20" />
+          <Property Name="age" Type="int" />
+          <Property Name="DOB_Jury" Type="date" />
+          <Property Name="address_jury" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="lawyer">
+          <Key>
+            <PropertyRef Name="Lawyer_ID" />
+          </Key>
+          <Property Name="Lawyer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_lawyer" Type="char" MaxLength="20" />
+          <Property Name="client" Type="char" MaxLength="20" />
+          <Property Name="Firm_ID" Type="int" />
+          <Property Name="Plaintiff" Type="int" />
+          <Property Name="Defendant_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Plaintiff">
+          <Key>
+            <PropertyRef Name="Plaintiff_ID" />
+          </Key>
+          <Property Name="Plaintiff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_plain" Type="char" MaxLength="20" />
+          <Property Name="age_plain" Type="int" />
+          <Property Name="DOB_plain" Type="date" />
+        </EntityType>
+        <EntityType Name="Sheriff">
+          <Key>
+            <PropertyRef Name="Sheriff_ID" />
+          </Key>
+          <Property Name="Sheriff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOB_Sheriff" Type="date" />
+          <Property Name="Address_sheriff" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="spectators">
+          <Key>
+            <PropertyRef Name="Spec_ID" />
+          </Key>
+          <Property Name="Spec_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_spec" Type="char" MaxLength="20" />
+          <Property Name="Age" Type="int" />
+          <Property Name="DOB_Spec" Type="date" />
+          <Property Name="address_spec" Type="char" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__courtroom__Clerk__3E52440B">
+          <End Role="Clerk" Type="Self.Clerk" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clerk">
+              <PropertyRef Name="Clerk_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Clerk_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Defen__3C69FB99">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Judge__3F466844">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="Judge_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Judge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Membe__412EB0B6">
+          <End Role="Jury" Type="Self.Jury" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jury">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Plain__3B75D760">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Sheri__403A8C7D">
+          <End Role="Sheriff" Type="Self.Sheriff" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sheriff">
+              <PropertyRef Name="Sheriff_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Sheriff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Spec___3D5E1FD2">
+          <End Role="spectators" Type="Self.spectators" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spectators">
+              <PropertyRef Name="Spec_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Spec_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DistrictC__Room___440B1D61">
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="0..1" />
+          <End Role="DistrictCourt" Type="Self.DistrictCourt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courtroom">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="DistrictCourt">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HighCourt__ID_DC__46E78A0C">
+          <End Role="DistrictCourt" Type="Self.DistrictCourt" Multiplicity="0..1" />
+          <End Role="HighCourt" Type="Self.HighCourt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DistrictCourt">
+              <PropertyRef Name="ID_DC" />
+            </Principal>
+            <Dependent Role="HighCourt">
+              <PropertyRef Name="ID_DC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Defendant__38996AB5">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Firm_ID__36B12243">
+          <End Role="firm" Type="Self.firm" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="Firm_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Firm_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Plaintiff__37A5467C">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Defendan__33D4B598">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Firm_ID__31EC6D26">
+          <End Role="firm" Type="Self.firm" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="Firm_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Firm_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Plaintif__32E0915F">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CourtModelStoreContainer">
+          <EntitySet Name="Clerk" EntityType="Self.Clerk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courtroom" EntityType="Self.courtroom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Defendant" EntityType="Self.Defendant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictCourt" EntityType="Self.DistrictCourt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firm" EntityType="Self.firm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighCourt" EntityType="Self.HighCourt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Judge" EntityType="Self.Judge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jury" EntityType="Self.Jury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lawyer" EntityType="Self.lawyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plaintiff" EntityType="Self.Plaintiff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sheriff" EntityType="Self.Sheriff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spectators" EntityType="Self.spectators" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__courtroom__Clerk__3E52440B" Association="Self.FK__courtroom__Clerk__3E52440B">
+            <End Role="Clerk" EntitySet="Clerk" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Defen__3C69FB99" Association="Self.FK__courtroom__Defen__3C69FB99">
+            <End Role="Defendant" EntitySet="Defendant" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Judge__3F466844" Association="Self.FK__courtroom__Judge__3F466844">
+            <End Role="Judge" EntitySet="Judge" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Membe__412EB0B6" Association="Self.FK__courtroom__Membe__412EB0B6">
+            <End Role="Jury" EntitySet="Jury" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Plain__3B75D760" Association="Self.FK__courtroom__Plain__3B75D760">
+            <End Role="Plaintiff" EntitySet="Plaintiff" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Sheri__403A8C7D" Association="Self.FK__courtroom__Sheri__403A8C7D">
+            <End Role="Sheriff" EntitySet="Sheriff" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Spec___3D5E1FD2" Association="Self.FK__courtroom__Spec___3D5E1FD2">
+            <End Role="spectators" EntitySet="spectators" />
+            <End Role="courtroom" EntitySet="courtroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DistrictC__Room___440B1D61" Association="Self.FK__DistrictC__Room___440B1D61">
+            <End Role="courtroom" EntitySet="courtroom" />
+            <End Role="DistrictCourt" EntitySet="DistrictCourt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HighCourt__ID_DC__46E78A0C" Association="Self.FK__HighCourt__ID_DC__46E78A0C">
+            <End Role="DistrictCourt" EntitySet="DistrictCourt" />
+            <End Role="HighCourt" EntitySet="HighCourt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Defendant__38996AB5" Association="Self.FK__Judge__Defendant__38996AB5">
+            <End Role="Defendant" EntitySet="Defendant" />
+            <End Role="Judge" EntitySet="Judge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Firm_ID__36B12243" Association="Self.FK__Judge__Firm_ID__36B12243">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="Judge" EntitySet="Judge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Plaintiff__37A5467C" Association="Self.FK__Judge__Plaintiff__37A5467C">
+            <End Role="Plaintiff" EntitySet="Plaintiff" />
+            <End Role="Judge" EntitySet="Judge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Defendan__33D4B598" Association="Self.FK__lawyer__Defendan__33D4B598">
+            <End Role="Defendant" EntitySet="Defendant" />
+            <End Role="lawyer" EntitySet="lawyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Firm_ID__31EC6D26" Association="Self.FK__lawyer__Firm_ID__31EC6D26">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="lawyer" EntitySet="lawyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Plaintif__32E0915F" Association="Self.FK__lawyer__Plaintif__32E0915F">
+            <End Role="Plaintiff" EntitySet="Plaintiff" />
+            <End Role="lawyer" EntitySet="lawyer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CourtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clerk">
+          <Key>
+            <PropertyRef Name="Clerk_ID" />
+          </Key>
+          <Property Name="Clerk_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_clerk" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="age_clerk" Type="Int32" />
+          <Property Name="DOB_Clerk" Type="DateTime" Precision="0" />
+          <Property Name="Address_Clerk" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Records_made" Type="Int32" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Clerk__3E52440B" FromRole="Clerk" ToRole="courtroom" />
+        </EntityType>
+        <EntityType Name="courtroom">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location_cr" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Phone_no_cr" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="case_t" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Plaintiff" Type="Int32" />
+          <Property Name="Defendant_ID" Type="Int32" />
+          <Property Name="Spec_ID" Type="Int32" />
+          <Property Name="Clerk_ID" Type="Int32" />
+          <Property Name="Judge_ID" Type="Int32" />
+          <Property Name="Sheriff_ID" Type="Int32" />
+          <Property Name="Member_ID" Type="Int32" />
+          <NavigationProperty Name="Clerk" Relationship="Self.FK__courtroom__Clerk__3E52440B" FromRole="courtroom" ToRole="Clerk" />
+          <NavigationProperty Name="Defendant" Relationship="Self.FK__courtroom__Defen__3C69FB99" FromRole="courtroom" ToRole="Defendant" />
+          <NavigationProperty Name="Judge" Relationship="Self.FK__courtroom__Judge__3F466844" FromRole="courtroom" ToRole="Judge" />
+          <NavigationProperty Name="Jury" Relationship="Self.FK__courtroom__Membe__412EB0B6" FromRole="courtroom" ToRole="Jury" />
+          <NavigationProperty Name="Plaintiff1" Relationship="Self.FK__courtroom__Plain__3B75D760" FromRole="courtroom" ToRole="Plaintiff" />
+          <NavigationProperty Name="Sheriff" Relationship="Self.FK__courtroom__Sheri__403A8C7D" FromRole="courtroom" ToRole="Sheriff" />
+          <NavigationProperty Name="spectator" Relationship="Self.FK__courtroom__Spec___3D5E1FD2" FromRole="courtroom" ToRole="spectators" />
+          <NavigationProperty Name="DistrictCourts" Relationship="Self.FK__DistrictC__Room___440B1D61" FromRole="courtroom" ToRole="DistrictCourt" />
+        </EntityType>
+        <EntityType Name="Defendant">
+          <Key>
+            <PropertyRef Name="Defendant_ID" />
+          </Key>
+          <Property Name="Defendant_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_defend" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="age_defend" Type="Int32" />
+          <Property Name="DOB_defend" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Defen__3C69FB99" FromRole="Defendant" ToRole="courtroom" />
+          <NavigationProperty Name="Judges" Relationship="Self.FK__Judge__Defendant__38996AB5" FromRole="Defendant" ToRole="Judge" />
+          <NavigationProperty Name="lawyers" Relationship="Self.FK__lawyer__Defendan__33D4B598" FromRole="Defendant" ToRole="lawyer" />
+        </EntityType>
+        <EntityType Name="DistrictCourt">
+          <Key>
+            <PropertyRef Name="ID_DC" />
+          </Key>
+          <Property Name="ID_DC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Phone_no_dc" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Room_ID" Type="Int32" />
+          <NavigationProperty Name="courtroom" Relationship="Self.FK__DistrictC__Room___440B1D61" FromRole="DistrictCourt" ToRole="courtroom" />
+          <NavigationProperty Name="HighCourts" Relationship="Self.FK__HighCourt__ID_DC__46E78A0C" FromRole="DistrictCourt" ToRole="HighCourt" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="Firm_ID" />
+          </Key>
+          <Property Name="Firm_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_firm" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="address_firm" Type="String" MaxLength="29" FixedLength="true" Unicode="false" />
+          <Property Name="phone_firm" Type="Int32" />
+          <Property Name="email_firm" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="StartingYear" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Judges" Relationship="Self.FK__Judge__Firm_ID__36B12243" FromRole="firm" ToRole="Judge" />
+          <NavigationProperty Name="lawyers" Relationship="Self.FK__lawyer__Firm_ID__31EC6D26" FromRole="firm" ToRole="lawyer" />
+        </EntityType>
+        <EntityType Name="HighCourt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChiefJustice" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Phoneno" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="ID_DC" Type="Int32" />
+          <NavigationProperty Name="DistrictCourt" Relationship="Self.FK__HighCourt__ID_DC__46E78A0C" FromRole="HighCourt" ToRole="DistrictCourt" />
+        </EntityType>
+        <EntityType Name="Judge">
+          <Key>
+            <PropertyRef Name="Judge_ID" />
+          </Key>
+          <Property Name="Judge_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_judge" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="age_judge" Type="Int32" />
+          <Property Name="rank_judge" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="YearsInservice" Type="Int32" />
+          <Property Name="Firm_ID" Type="Int32" />
+          <Property Name="Plaintiff" Type="Int32" />
+          <Property Name="Defendant_ID" Type="Int32" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Judge__3F466844" FromRole="Judge" ToRole="courtroom" />
+          <NavigationProperty Name="Defendant" Relationship="Self.FK__Judge__Defendant__38996AB5" FromRole="Judge" ToRole="Defendant" />
+          <NavigationProperty Name="firm" Relationship="Self.FK__Judge__Firm_ID__36B12243" FromRole="Judge" ToRole="firm" />
+          <NavigationProperty Name="Plaintiff1" Relationship="Self.FK__Judge__Plaintiff__37A5467C" FromRole="Judge" ToRole="Plaintiff" />
+        </EntityType>
+        <EntityType Name="Jury">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_jury" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="DOB_Jury" Type="DateTime" Precision="0" />
+          <Property Name="address_jury" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Membe__412EB0B6" FromRole="Jury" ToRole="courtroom" />
+        </EntityType>
+        <EntityType Name="lawyer">
+          <Key>
+            <PropertyRef Name="Lawyer_ID" />
+          </Key>
+          <Property Name="Lawyer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_lawyer" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="client" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Firm_ID" Type="Int32" />
+          <Property Name="Plaintiff" Type="Int32" />
+          <Property Name="Defendant_ID" Type="Int32" />
+          <NavigationProperty Name="Defendant" Relationship="Self.FK__lawyer__Defendan__33D4B598" FromRole="lawyer" ToRole="Defendant" />
+          <NavigationProperty Name="firm" Relationship="Self.FK__lawyer__Firm_ID__31EC6D26" FromRole="lawyer" ToRole="firm" />
+          <NavigationProperty Name="Plaintiff1" Relationship="Self.FK__lawyer__Plaintif__32E0915F" FromRole="lawyer" ToRole="Plaintiff" />
+        </EntityType>
+        <EntityType Name="Plaintiff">
+          <Key>
+            <PropertyRef Name="Plaintiff_ID" />
+          </Key>
+          <Property Name="Plaintiff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_plain" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="age_plain" Type="Int32" />
+          <Property Name="DOB_plain" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Plain__3B75D760" FromRole="Plaintiff" ToRole="courtroom" />
+          <NavigationProperty Name="Judges" Relationship="Self.FK__Judge__Plaintiff__37A5467C" FromRole="Plaintiff" ToRole="Judge" />
+          <NavigationProperty Name="lawyers" Relationship="Self.FK__lawyer__Plaintif__32E0915F" FromRole="Plaintiff" ToRole="lawyer" />
+        </EntityType>
+        <EntityType Name="Sheriff">
+          <Key>
+            <PropertyRef Name="Sheriff_ID" />
+          </Key>
+          <Property Name="Sheriff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOB_Sheriff" Type="DateTime" Precision="0" />
+          <Property Name="Address_sheriff" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Sheri__403A8C7D" FromRole="Sheriff" ToRole="courtroom" />
+        </EntityType>
+        <EntityType Name="spectator">
+          <Key>
+            <PropertyRef Name="Spec_ID" />
+          </Key>
+          <Property Name="Spec_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_spec" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="DOB_Spec" Type="DateTime" Precision="0" />
+          <Property Name="address_spec" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="courtrooms" Relationship="Self.FK__courtroom__Spec___3D5E1FD2" FromRole="spectators" ToRole="courtroom" />
+        </EntityType>
+        <Association Name="FK__courtroom__Clerk__3E52440B">
+          <End Role="Clerk" Type="Self.Clerk" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clerk">
+              <PropertyRef Name="Clerk_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Clerk_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Defen__3C69FB99">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Judge__3F466844">
+          <End Role="Judge" Type="Self.Judge" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Judge">
+              <PropertyRef Name="Judge_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Judge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Membe__412EB0B6">
+          <End Role="Jury" Type="Self.Jury" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jury">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Plain__3B75D760">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Sheri__403A8C7D">
+          <End Role="Sheriff" Type="Self.Sheriff" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sheriff">
+              <PropertyRef Name="Sheriff_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Sheriff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__courtroom__Spec___3D5E1FD2">
+          <End Role="spectators" Type="Self.spectator" Multiplicity="0..1" />
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spectators">
+              <PropertyRef Name="Spec_ID" />
+            </Principal>
+            <Dependent Role="courtroom">
+              <PropertyRef Name="Spec_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DistrictC__Room___440B1D61">
+          <End Role="courtroom" Type="Self.courtroom" Multiplicity="0..1" />
+          <End Role="DistrictCourt" Type="Self.DistrictCourt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courtroom">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="DistrictCourt">
+              <PropertyRef Name="Room_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Defendant__38996AB5">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Defendan__33D4B598">
+          <End Role="Defendant" Type="Self.Defendant" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defendant">
+              <PropertyRef Name="Defendant_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Defendant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HighCourt__ID_DC__46E78A0C">
+          <End Role="DistrictCourt" Type="Self.DistrictCourt" Multiplicity="0..1" />
+          <End Role="HighCourt" Type="Self.HighCourt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DistrictCourt">
+              <PropertyRef Name="ID_DC" />
+            </Principal>
+            <Dependent Role="HighCourt">
+              <PropertyRef Name="ID_DC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Firm_ID__36B12243">
+          <End Role="firm" Type="Self.firm" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="Firm_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Firm_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Firm_ID__31EC6D26">
+          <End Role="firm" Type="Self.firm" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="Firm_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Firm_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Judge__Plaintiff__37A5467C">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="Judge" Type="Self.Judge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="Judge">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lawyer__Plaintif__32E0915F">
+          <End Role="Plaintiff" Type="Self.Plaintiff" Multiplicity="0..1" />
+          <End Role="lawyer" Type="Self.lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plaintiff">
+              <PropertyRef Name="Plaintiff_ID" />
+            </Principal>
+            <Dependent Role="lawyer">
+              <PropertyRef Name="Plaintiff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CourtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clerks" EntityType="Self.Clerk" />
+          <EntitySet Name="courtrooms" EntityType="Self.courtroom" />
+          <EntitySet Name="Defendants" EntityType="Self.Defendant" />
+          <EntitySet Name="DistrictCourts" EntityType="Self.DistrictCourt" />
+          <EntitySet Name="firms" EntityType="Self.firm" />
+          <EntitySet Name="HighCourts" EntityType="Self.HighCourt" />
+          <EntitySet Name="Judges" EntityType="Self.Judge" />
+          <EntitySet Name="Juries" EntityType="Self.Jury" />
+          <EntitySet Name="lawyers" EntityType="Self.lawyer" />
+          <EntitySet Name="Plaintiffs" EntityType="Self.Plaintiff" />
+          <EntitySet Name="Sheriffs" EntityType="Self.Sheriff" />
+          <EntitySet Name="spectators" EntityType="Self.spectator" />
+          <AssociationSet Name="FK__courtroom__Clerk__3E52440B" Association="Self.FK__courtroom__Clerk__3E52440B">
+            <End Role="Clerk" EntitySet="Clerks" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Defen__3C69FB99" Association="Self.FK__courtroom__Defen__3C69FB99">
+            <End Role="Defendant" EntitySet="Defendants" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Judge__3F466844" Association="Self.FK__courtroom__Judge__3F466844">
+            <End Role="Judge" EntitySet="Judges" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Membe__412EB0B6" Association="Self.FK__courtroom__Membe__412EB0B6">
+            <End Role="Jury" EntitySet="Juries" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Plain__3B75D760" Association="Self.FK__courtroom__Plain__3B75D760">
+            <End Role="Plaintiff" EntitySet="Plaintiffs" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Sheri__403A8C7D" Association="Self.FK__courtroom__Sheri__403A8C7D">
+            <End Role="Sheriff" EntitySet="Sheriffs" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__courtroom__Spec___3D5E1FD2" Association="Self.FK__courtroom__Spec___3D5E1FD2">
+            <End Role="spectators" EntitySet="spectators" />
+            <End Role="courtroom" EntitySet="courtrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DistrictC__Room___440B1D61" Association="Self.FK__DistrictC__Room___440B1D61">
+            <End Role="courtroom" EntitySet="courtrooms" />
+            <End Role="DistrictCourt" EntitySet="DistrictCourts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Defendant__38996AB5" Association="Self.FK__Judge__Defendant__38996AB5">
+            <End Role="Defendant" EntitySet="Defendants" />
+            <End Role="Judge" EntitySet="Judges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Defendan__33D4B598" Association="Self.FK__lawyer__Defendan__33D4B598">
+            <End Role="Defendant" EntitySet="Defendants" />
+            <End Role="lawyer" EntitySet="lawyers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HighCourt__ID_DC__46E78A0C" Association="Self.FK__HighCourt__ID_DC__46E78A0C">
+            <End Role="DistrictCourt" EntitySet="DistrictCourts" />
+            <End Role="HighCourt" EntitySet="HighCourts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Firm_ID__36B12243" Association="Self.FK__Judge__Firm_ID__36B12243">
+            <End Role="firm" EntitySet="firms" />
+            <End Role="Judge" EntitySet="Judges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Firm_ID__31EC6D26" Association="Self.FK__lawyer__Firm_ID__31EC6D26">
+            <End Role="firm" EntitySet="firms" />
+            <End Role="lawyer" EntitySet="lawyers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Judge__Plaintiff__37A5467C" Association="Self.FK__Judge__Plaintiff__37A5467C">
+            <End Role="Plaintiff" EntitySet="Plaintiffs" />
+            <End Role="Judge" EntitySet="Judges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lawyer__Plaintif__32E0915F" Association="Self.FK__lawyer__Plaintif__32E0915F">
+            <End Role="Plaintiff" EntitySet="Plaintiffs" />
+            <End Role="lawyer" EntitySet="lawyers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CourtModelStoreContainer" CdmEntityContainer="CourtEntities">
+          <EntitySetMapping Name="Clerks">
+            <EntityTypeMapping TypeName="CourtModel.Clerk">
+              <MappingFragment StoreEntitySet="Clerk">
+                <ScalarProperty Name="Clerk_ID" ColumnName="Clerk_ID" />
+                <ScalarProperty Name="name_clerk" ColumnName="name_clerk" />
+                <ScalarProperty Name="age_clerk" ColumnName="age_clerk" />
+                <ScalarProperty Name="DOB_Clerk" ColumnName="DOB_Clerk" />
+                <ScalarProperty Name="Address_Clerk" ColumnName="Address_Clerk" />
+                <ScalarProperty Name="Records_made" ColumnName="Records_made" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courtrooms">
+            <EntityTypeMapping TypeName="CourtModel.courtroom">
+              <MappingFragment StoreEntitySet="courtroom">
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+                <ScalarProperty Name="location_cr" ColumnName="location_cr" />
+                <ScalarProperty Name="Phone_no_cr" ColumnName="Phone_no_cr" />
+                <ScalarProperty Name="case_t" ColumnName="case_t" />
+                <ScalarProperty Name="Plaintiff" ColumnName="Plaintiff" />
+                <ScalarProperty Name="Defendant_ID" ColumnName="Defendant_ID" />
+                <ScalarProperty Name="Spec_ID" ColumnName="Spec_ID" />
+                <ScalarProperty Name="Clerk_ID" ColumnName="Clerk_ID" />
+                <ScalarProperty Name="Judge_ID" ColumnName="Judge_ID" />
+                <ScalarProperty Name="Sheriff_ID" ColumnName="Sheriff_ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defendants">
+            <EntityTypeMapping TypeName="CourtModel.Defendant">
+              <MappingFragment StoreEntitySet="Defendant">
+                <ScalarProperty Name="Defendant_ID" ColumnName="Defendant_ID" />
+                <ScalarProperty Name="name_defend" ColumnName="name_defend" />
+                <ScalarProperty Name="age_defend" ColumnName="age_defend" />
+                <ScalarProperty Name="DOB_defend" ColumnName="DOB_defend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictCourts">
+            <EntityTypeMapping TypeName="CourtModel.DistrictCourt">
+              <MappingFragment StoreEntitySet="DistrictCourt">
+                <ScalarProperty Name="ID_DC" ColumnName="ID_DC" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="Phone_no_dc" ColumnName="Phone_no_dc" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firms">
+            <EntityTypeMapping TypeName="CourtModel.firm">
+              <MappingFragment StoreEntitySet="firm">
+                <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+                <ScalarProperty Name="name_firm" ColumnName="name_firm" />
+                <ScalarProperty Name="address_firm" ColumnName="address_firm" />
+                <ScalarProperty Name="phone_firm" ColumnName="phone_firm" />
+                <ScalarProperty Name="email_firm" ColumnName="email_firm" />
+                <ScalarProperty Name="StartingYear" ColumnName="StartingYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighCourts">
+            <EntityTypeMapping TypeName="CourtModel.HighCourt">
+              <MappingFragment StoreEntitySet="HighCourt">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChiefJustice" ColumnName="ChiefJustice" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="Phoneno" ColumnName="Phoneno" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ID_DC" ColumnName="ID_DC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Judges">
+            <EntityTypeMapping TypeName="CourtModel.Judge">
+              <MappingFragment StoreEntitySet="Judge">
+                <ScalarProperty Name="Judge_ID" ColumnName="Judge_ID" />
+                <ScalarProperty Name="name_judge" ColumnName="name_judge" />
+                <ScalarProperty Name="age_judge" ColumnName="age_judge" />
+                <ScalarProperty Name="rank_judge" ColumnName="rank_judge" />
+                <ScalarProperty Name="YearsInservice" ColumnName="YearsInservice" />
+                <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+                <ScalarProperty Name="Plaintiff" ColumnName="Plaintiff" />
+                <ScalarProperty Name="Defendant_ID" ColumnName="Defendant_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juries">
+            <EntityTypeMapping TypeName="CourtModel.Jury">
+              <MappingFragment StoreEntitySet="Jury">
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Name_jury" ColumnName="Name_jury" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="DOB_Jury" ColumnName="DOB_Jury" />
+                <ScalarProperty Name="address_jury" ColumnName="address_jury" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lawyers">
+            <EntityTypeMapping TypeName="CourtModel.lawyer">
+              <MappingFragment StoreEntitySet="lawyer">
+                <ScalarProperty Name="Lawyer_ID" ColumnName="Lawyer_ID" />
+                <ScalarProperty Name="name_lawyer" ColumnName="name_lawyer" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="Firm_ID" ColumnName="Firm_ID" />
+                <ScalarProperty Name="Plaintiff" ColumnName="Plaintiff" />
+                <ScalarProperty Name="Defendant_ID" ColumnName="Defendant_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plaintiffs">
+            <EntityTypeMapping TypeName="CourtModel.Plaintiff">
+              <MappingFragment StoreEntitySet="Plaintiff">
+                <ScalarProperty Name="Plaintiff_ID" ColumnName="Plaintiff_ID" />
+                <ScalarProperty Name="name_plain" ColumnName="name_plain" />
+                <ScalarProperty Name="age_plain" ColumnName="age_plain" />
+                <ScalarProperty Name="DOB_plain" ColumnName="DOB_plain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sheriffs">
+            <EntityTypeMapping TypeName="CourtModel.Sheriff">
+              <MappingFragment StoreEntitySet="Sheriff">
+                <ScalarProperty Name="Sheriff_ID" ColumnName="Sheriff_ID" />
+                <ScalarProperty Name="DOB_Sheriff" ColumnName="DOB_Sheriff" />
+                <ScalarProperty Name="Address_sheriff" ColumnName="Address_sheriff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spectators">
+            <EntityTypeMapping TypeName="CourtModel.spectator">
+              <MappingFragment StoreEntitySet="spectators">
+                <ScalarProperty Name="Spec_ID" ColumnName="Spec_ID" />
+                <ScalarProperty Name="Name_spec" ColumnName="Name_spec" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DOB_Spec" ColumnName="DOB_Spec" />
+                <ScalarProperty Name="address_spec" ColumnName="address_spec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

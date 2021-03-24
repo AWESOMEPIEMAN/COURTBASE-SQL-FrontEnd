@@ -1,0 +1,42 @@
+﻿
+@model CourtroomProject.COURTER.Sheriff
+
+@{
+    ViewBag.Title = "SheriffIndex";
+}
+
+<h2>SheriffIndex</h2>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("SheriffAdd", "Sheriff", FormMethod.Post))
+{
+<div class="container">
+
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Sheriff_ID)
+        <label>Address</label>
+
+        @Html.ValidationMessageFor(x => x.Address_sheriff, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.Address_sheriff, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+    
+        <label>DOB</label>
+
+        @Html.ValidationMessageFor(x => x.DOB_Sheriff, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.DOB_Sheriff, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+
+
+</div>
+  }
