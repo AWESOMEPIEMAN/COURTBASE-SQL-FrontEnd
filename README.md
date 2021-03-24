@@ -1,2 +1,4 @@
 # COURTBASE-SQL-FrontEnd
 Hey Guys :D
+So this is a SQl project I made using MS SQL Server and MS SQL management studio. It is also coupled with the ASP.Net framework and C#. To use the project for your own testing you will have to edit a few things yourselves and will also have to connect the database to the SQL server on your own. I assume you are familiar with front end and SQL So I won't say what to edit. 
+
